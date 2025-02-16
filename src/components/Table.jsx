@@ -1,25 +1,11 @@
 import React from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, 
-    Grid, Paper, Box, Typography } from "@mui/material";
+    Grid, Paper, Box, } from "@mui/material";
 import "../styles/table-components.css";
 import { p90ableStats } from "../utils/constants";
-
-const getNestedValue = (obj, path) => {
-    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
-};
-
-const convertToP90 = (player, statKey) => {
-    const minutesPlayed = player?.overallStatsDto?.minutesPlayed || 0;
-    const statValue = player?.overallStatsDto?.[statKey] || 0;
-    if (minutesPlayed > 0) {
-        const p90Value = (90 / minutesPlayed) * statValue;
-        return p90Value % 1 !== 0 ? p90Value.toFixed(2) : p90Value;
-    }
-    return 0;
-};
+import { convertToP90, getNestedValue } from "../utils/statsUtils";
 
 const TableComponent = ({ players, headers, order, orderBy, handleSortRequest, rowsPerPage, page, statsType }) => {
-
     return (
         <Box className="table-container">
             <Grid container spacing={3}>
