@@ -3,8 +3,6 @@ import { Paper, Grid, Typography } from "@mui/material";
 import "../styles/player-profile.css";
 
 const GoalkeeperProfile = ({ player }) => {
-    if (!player) return <Typography>No data available</Typography>;
-
     return (
         <Paper className="goalkeeper-stats">
             <Typography variant="h5" className="section-title">Stats</Typography>
