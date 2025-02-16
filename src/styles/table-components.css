@@ -1,0 +1,50 @@
+/* TableComponent.css */
+
+.table-container {
+    padding: 24px;
+    margin: 0 auto; /* Centers the container horizontally */
+}
+
+.options-section {
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.options-header {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.position-selector,
+.stats-type-selector {
+    margin-top: 8px;
+}
+
+.toggle-button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.toggle-button-group .MuiToggleButton-root {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-button-group .Mui-selected {
+    background-color: #3f51b5;
+    color: white;
+}
+
+.toggle-button-group .MuiToggleButton-root:hover {
+    background-color: #e0e0e0;
+}
