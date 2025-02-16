@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Paper, Typography, CircularProgress } from "@mui/material";
 import usePlayer from "../hooks/usePlayer";
 import GoalkeeperProfile from "./GoalkeeperProfile";
+import OutfieldProfile from "./OutfieldProfile";
 
 const PlayerProfile = () => {
     const { id } = useParams();
@@ -19,7 +20,7 @@ const PlayerProfile = () => {
             {player.position === "G" ? (
                 <GoalkeeperProfile player={player} />
             ) : (
-                <Typography variant="body1">Outfield player stats coming soon...</Typography>
+                <OutfieldProfile player={player} />
             )}
         </Paper>
     );
