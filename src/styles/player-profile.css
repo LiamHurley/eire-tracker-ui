@@ -1,0 +1,23 @@
+.player-profile {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: var(--primary-white);
+    color: var(--text-color);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.goalkeeper-stats {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+}
+
+.section-title {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}

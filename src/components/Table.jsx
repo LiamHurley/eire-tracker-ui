@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Table
 import "../styles/table-components.css";
 import { p90ableStats } from "../utils/constants";
 import { convertToP90, getNestedValue } from "../utils/statsUtils";
+import { Link } from "react-router-dom";
 
 const TableComponent = ({ players, headers, order, orderBy, handleSortRequest, rowsPerPage, page, statsType }) => {
     return (
@@ -34,10 +35,16 @@ const TableComponent = ({ players, headers, order, orderBy, handleSortRequest, r
                                         <TableRow key={player.playerId} className="table-row">
                                             {headers.map((header) => (
                                                 <TableCell key={header.key} className="table-cell">
-                                                    {p90ableStats.includes(header.key) && statsType === "p90"
-                                                        ? convertToP90(player, header.key.split(".").pop())
-                                                        : getNestedValue(player, header.key)}
-                                                </TableCell>
+                                                {header.key === "name" ? (
+                                                    <Link to={`/players/${player.playerId}`} className="player-link">
+                                                        {getNestedValue(player, header.key)}
+                                                    </Link>
+                                                ) : p90ableStats.includes(header.key) && statsType === "p90" ? (
+                                                    convertToP90(player, header.key.split(".").pop())
+                                                ) : (
+                                                    getNestedValue(player, header.key)
+                                                )}
+                                            </TableCell>
                                             ))}
                                         </TableRow>
                                     ))}

@@ -32,8 +32,8 @@ const PlayersTable = () => {
             />
 
             <TableComponent
-                players={filteredPlayers}
-                headers={STAT_HEADERS[selectedCategory]}  // Pass the selected category headers
+                players={filteredPlayers || []}
+                headers={STAT_HEADERS[selectedCategory] || []}  // Pass the selected category headers
                 order="asc"
                 orderBy="name"
                 handleSortRequest={handleSortRequest}
