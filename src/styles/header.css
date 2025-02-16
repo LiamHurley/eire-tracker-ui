@@ -1,0 +1,57 @@
+/* header.css */
+.header {
+    background-color: var(--primary-green);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary-white);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    color: var(--primary-white);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: var(--accent-orange);
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: var(--primary-green);
+      padding: 10px;
+      border-radius: 5px;
+    }
+  
+    .header:hover .nav-links {
+      display: flex;
+    }
+  
+    .nav-link {
+      padding: 8px;
+      font-size: 1.2rem;
+    }
+  }  
