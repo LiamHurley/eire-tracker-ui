@@ -1,23 +1,67 @@
+/* Base styles for the player profile */
 .player-profile {
     padding: 20px;
     margin: 20px auto;
-    max-width: 600px;
+    max-width: 800px;
     background-color: var(--primary-white);
     color: var(--text-color);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
 }
 
-.goalkeeper-stats {
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 8px;
-    background-color: var(--primary-green);
-    color: var(--primary-white);
-}
-
-.section-title {
+/* Player name styling */
+.profile-name {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-green);
     margin-bottom: 10px;
+}
+
+/* Basic info styling (age, position, club) */
+.profile-basic-info {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* Section divider */
+.section-divider {
+    margin: 20px 0;
+}
+
+/* Grid system for stats sections */
+.stats-section {
+    padding: 15px;
+    background-color: var(--primary-light);
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Section title styling */
+.section-title {
     text-align: center;
     font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--primary-green);
+}
+
+/* Stats text styling */
+.stats-section p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* Ensuring responsiveness */
+@media (max-width: 600px) {
+    .stats-section {
+        padding: 10px;
+    }
+
+    .section-title {
+        font-size: 1rem;
+    }
 }
