@@ -32,7 +32,7 @@ const PlayerProfile = () => {
             )}
 
             {/* Performances Table */}
-            <Typography variant="h6" sx={{ marginTop: 3 }}>Performance History</Typography>
+            <Typography variant="h6" sx={{ marginTop: 3 }}>Match History</Typography>
             <TableContainer sx={{ marginTop: 2 }}>
                 <Table>
                     <TableHead>

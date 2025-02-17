@@ -54,6 +54,46 @@ export const STAT_HEADERS = {
     ],
 };
 
+export const OUTFIELD_PROFILE_STATS = {
+  Defensive: [
+    { label: "Errors", key: "errorLeadToAShot" },
+    { label: "Aerial duels", key: "totalAerialDuels" },
+    { label: "Aerial win %", key: "aerialDuelsWonPercentage" },
+    { label: "Duel win %", key: "duelWonPercentage" },
+    { label: "Interceptions", key: "interceptionWon" },
+    { label: "Tackles", key: "totalTackle" },
+    { label: "Blocks", key: "outfielderBlock" },
+    { label: "Fouls", key: "fouls" },
+  ],
+  General: [
+    { label: "Appearances", key: "matchesPlayed" },
+    { label: "Minutes", key: "minutesPlayed" },
+    { label: "Goals", key: "goals" },
+    { label: "Assists", key: "goalAssist" },
+    { label: "Avg rating", key: "rating" },
+  ],
+  Creativity: [
+    { label: "Passes completed", key: "accuratePass" },
+    { label: "Assists", key: "goalAssist" },
+    { label: "Passing acc %", key: "passAccuracy" },
+    { label: "Long balls", key: "totalLongBalls" },
+    { label: "Long ball acc %", key: "longBallAccuracy" },
+    { label: "Big chances created", key: "bigChanceCreated" },
+    { label: "Key passes", key: "keyPass" },
+    { label: "Touches", key: "touches" },
+    { label: "Poss lost", key: "possessionLostCtrl" },
+  ],
+  Attacking: [
+    { label: "Goals", key: "goals" },
+    { label: "Shots", key: "totalShotsTaken" },
+    { label: "Shots on target", key: "onTargetScoringAttempt" },
+    { label: "Big chances missed", key: "bigChanceMissed" },
+    { label: "Aerial win %", key: "aerialDuelsWonPercentage" },
+    { label: "Fouled", key: "wasFouled" },
+    { label: "Offside", key: "totalOffside" },
+  ],
+}
+
 export const p90ableStats = [
     "overallStatsDto.goals",
     "overallStatsDto.goalAssist",
