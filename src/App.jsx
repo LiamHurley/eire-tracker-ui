@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PlayersTable from "./components/OverallTable";
 import PlayerProfile from "./components/PlayerProfile";
 import Header from "./components/Header";
+import PlayerComparison from "./components/PlayerComparison";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
           <Route path="/" element={<PlayersTable />} />
           <Route path="/players/:id" element={<PlayerProfile />} />
+          <Route path="/compare" element={<PlayerComparison />} />
       </Routes>
     </>
   );
