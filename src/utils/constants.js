@@ -95,7 +95,14 @@ export const OUTFIELD_PROFILE_STATS = {
 }
 
 export const p90ableStats = [
+    "overallStatsDto.accuratePass",
+    "overallStatsDto.totalLongBalls",
+    "overallStatsDto.bigChanceCreated",
+    "overallStatsDto.touches",
     "overallStatsDto.goals",
+    "overallStatsDto.totalOffside",
+    "overallStatsDto.wasFouled",
+    "overallStatsDto.onTargetScoringAttempt",
     "overallStatsDto.goalAssist",
     "overallStatsDto.keyPass",
     "overallStatsDto.saves",

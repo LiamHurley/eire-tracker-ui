@@ -1,110 +1,41 @@
-/* Base styles for the player profile */
 .player-profile {
     padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    background-color: var(--primary-white);
-    color: var(--text-color);
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Roboto', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Player name styling */
-.profile-name {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--primary-green);
-    margin-bottom: 10px;
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+    gap: 20px;
+    align-items: stretch; /* Ensures all cards are of equal height */
 }
 
-/* Basic info styling (age, position, club) */
-.profile-basic-info {
-    text-align: center;
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-bottom: 20px;
-}
-
-/* Section divider */
-.section-divider {
-    margin: 20px 0;
-}
-
-/* Grid system for stats sections */
-.stats-section {
-    padding: 15px;
-    background-color: var(--primary-light);
+.stats-card {
+    flex: 1;
+    min-width: 250px; /* Minimum width for each card */
+    max-width: 300px; /* Optional: to prevent the cards from getting too wide */
+    height: 400px; /* Set fixed height, adjust as needed */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Section title styling */
+.stats-card .MuiCardContent-root {
+    flex: 1; /* Makes the card content stretch to fill available space */
+}
+
 .section-title {
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: var(--primary-green);
-}
-
-/* Stats text styling */
-.stats-section p {
-    font-size: 1rem;
-    margin-bottom: 8px;
-}
-
-/* Ensuring responsiveness */
-@media (max-width: 600px) {
-    .stats-section {
-        padding: 10px;
-    }
-
-    .section-title {
-        font-size: 1rem;
-    }
-}
-
-/* player-profile.css */
-.table-container {
-    margin-top: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f4f4f4;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
-td {
-    font-size: 14px;
-}
-
-table td, table th {
-    word-wrap: break-word;
-}
-
-h4, h6 {
-    margin-bottom: 10px;
-}
-
-h6 {
-    font-size: 1.2rem;
-    color: #3f51b5;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
+.stats-card:hover {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }

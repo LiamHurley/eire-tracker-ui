@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Paper, Typography, Table, TableBody, TableCell, TableContainer, TableHead, 
-    TableRow, CircularProgress, Divider } from "@mui/material";
+    TableRow, CircularProgress, Divider, ToggleButtonGroup, ToggleButton } from "@mui/material";
 import usePlayer from "../hooks/usePlayer";
 import GoalkeeperProfile from "./GoalkeeperProfile";
 import OutfieldProfile from "./OutfieldProfile";
@@ -13,7 +13,7 @@ const PlayerProfile = () => {
 
     if (loading) return <CircularProgress />;
     if (!player) return <Typography variant="h6">Player not found</Typography>;
-
+    
     const playerAge = calculateAge(player.dateOfBirth);
 
     return (
@@ -24,7 +24,7 @@ const PlayerProfile = () => {
                 Age: {playerAge} | Position: {player.position} | Club: {player.club}
              </Typography>
              <Divider className="section-divider" />
-
+                        
             {player.position === "G" ? (
                 <GoalkeeperProfile player={player} />
             ) : (
