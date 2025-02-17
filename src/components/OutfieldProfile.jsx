@@ -5,6 +5,7 @@ import { OUTFIELD_PROFILE_STATS } from "../utils/constants";
 import P90Toggle from "./P90Toggle";
 import { convertToP90 } from "../utils/statsUtils";
 import { p90ableStats } from "../utils/constants";
+import PlayerProfileP90ToggleDisplay from "./PlayerProfileP90ToggleDisplay";
 
 const OutfieldProfile = ({ player }) => {
     const [selectedStatsType, setSelectedStatsType] = useState("Overall");
@@ -41,15 +42,13 @@ const OutfieldProfile = ({ player }) => {
                     <CardContent>
                         <Typography variant="h5" className="section-title">Defensive</Typography>
                         {OUTFIELD_PROFILE_STATS.Defensive.map((stat) => (
-                            <Typography key={stat.key}>
-                            <strong>{stat.label}:</strong> {" "}
-                            {selectedStatsType === "Overall"
-                                ? player.overallStatsDto[stat.key]
-                                : p90ableStats.includes(`overallStatsDto.${stat.key}`) && player.overallStatsDto.minutesPlayed > 0
-                                ? convertToP90(player, stat.key)
-                                : player.overallStatsDto[stat.key]
-                            }
-                        </Typography>
+                            <PlayerProfileP90ToggleDisplay
+                                key={stat.key}
+                                stat={stat}
+                                selectedStatsType={selectedStatsType}
+                                player={player}
+                                p90ableStats={p90ableStats}
+                            />
                         ))}
                     </CardContent>
                 </Card>
@@ -59,15 +58,13 @@ const OutfieldProfile = ({ player }) => {
                     <CardContent>
                         <Typography variant="h5" className="section-title">Creativity</Typography>
                         {OUTFIELD_PROFILE_STATS.Creativity.map((stat) => (
-                            <Typography key={stat.key}>
-                                <strong>{stat.label}:</strong> {" "}
-                                {selectedStatsType === "Overall"
-                                    ? player.overallStatsDto[stat.key]
-                                    : p90ableStats.includes(`overallStatsDto.${stat.key}`) && player.overallStatsDto.minutesPlayed > 0
-                                    ? convertToP90(player, stat.key)
-                                    : player.overallStatsDto[stat.key]
-                                }
-                            </Typography>
+                            <PlayerProfileP90ToggleDisplay
+                                key={stat.key}
+                                stat={stat}
+                                selectedStatsType={selectedStatsType}
+                                player={player}
+                                p90ableStats={p90ableStats}
+                            />
                         ))}
                     </CardContent>
                 </Card>
@@ -77,15 +74,13 @@ const OutfieldProfile = ({ player }) => {
                     <CardContent>
                         <Typography variant="h5" className="section-title">Attacking</Typography>
                         {OUTFIELD_PROFILE_STATS.Attacking.map((stat) => (
-                            <Typography key={stat.key}>
-                            <strong>{stat.label}:</strong> {" "}
-                            {selectedStatsType === "Overall"
-                                ? player.overallStatsDto[stat.key]
-                                : p90ableStats.includes(`overallStatsDto.${stat.key}`) && player.overallStatsDto.minutesPlayed > 0
-                                ? convertToP90(player, stat.key)
-                                : player.overallStatsDto[stat.key]
-                            }
-                        </Typography>
+                            <PlayerProfileP90ToggleDisplay
+                                key={stat.key}
+                                stat={stat}
+                                selectedStatsType={selectedStatsType}
+                                player={player}
+                                p90ableStats={p90ableStats}
+                            />
                         ))}
                     </CardContent>
                 </Card>
