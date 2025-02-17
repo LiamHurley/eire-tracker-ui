@@ -2,7 +2,6 @@ import React from "react";
 import { Typography } from "@mui/material";
 import { convertToP90 } from "../utils/statsUtils";
 
-// The StatDisplay component to handle the logic for rendering the stats.
 const PlayerProfileP90ToggleDisplay = ({ stat, selectedStatsType, player, p90ableStats }) => {
     const statValue = selectedStatsType === "Overall"
         ? player.overallStatsDto[stat.key]

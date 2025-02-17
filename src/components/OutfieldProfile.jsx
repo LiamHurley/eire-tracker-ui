@@ -3,7 +3,6 @@ import { Paper, Typography, Card, CardContent } from "@mui/material";
 import "../styles/player-profile.css";
 import { OUTFIELD_PROFILE_STATS } from "../utils/constants";
 import P90Toggle from "./P90Toggle";
-import { convertToP90 } from "../utils/statsUtils";
 import { p90ableStats } from "../utils/constants";
 import PlayerProfileP90ToggleDisplay from "./PlayerProfileP90ToggleDisplay";
 
