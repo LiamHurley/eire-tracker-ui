@@ -1,11 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Paper, Typography, Table, TableBody, TableCell, TableContainer, TableHead, 
-    TableRow, CircularProgress, Divider, ToggleButtonGroup, ToggleButton } from "@mui/material";
+import { Paper, Typography, CircularProgress, Divider } from "@mui/material";
 import usePlayer from "../hooks/usePlayer";
 import GoalkeeperProfile from "./GoalkeeperProfile";
 import OutfieldProfile from "./OutfieldProfile";
 import { calculateAge } from "../utils/dateUtils";
+import GoalkeeperPerformances from "./GoalkeeperPerformances";
+import OutfieldPerformances from "./OutfieldPerformances";
 
 const PlayerProfile = () => {
     const { id } = useParams();
@@ -18,7 +19,6 @@ const PlayerProfile = () => {
 
     return (
         <Paper className="player-profile">
-             {/* Basic Information */}
              <Typography variant="h4" className="profile-name">{player.name}</Typography>
              <Typography variant="h6" className="profile-basic-info">
                 Age: {playerAge} | Position: {player.position} | Club: {player.club}
@@ -31,36 +31,12 @@ const PlayerProfile = () => {
                 <OutfieldProfile player={player} />
             )}
 
-            {/* Performances Table */}
             <Typography variant="h6" sx={{ marginTop: 3 }}>Match History</Typography>
-            <TableContainer sx={{ marginTop: 2 }}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Match Date</TableCell>
-                            <TableCell>Home Team</TableCell>
-                            <TableCell>Away Team</TableCell>
-                            <TableCell>Goals</TableCell>
-                            <TableCell>Assists</TableCell>
-                            <TableCell>Minutes Played</TableCell>
-                            <TableCell>Rating</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {player.performances.map((performance) => (
-                            <TableRow key={performance.performanceId}>
-                                <TableCell>{performance.matchDate}</TableCell>
-                                <TableCell>{performance.homeTeam}</TableCell>
-                                <TableCell>{performance.awayTeam}</TableCell>
-                                <TableCell>{performance.goals}</TableCell>
-                                <TableCell>{performance.goalAssist}</TableCell>
-                                <TableCell>{performance.minutesPlayed}</TableCell>
-                                <TableCell>{performance.rating}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            {player.position === "G" ? (
+                <GoalkeeperPerformances performances={player.performances} />
+            ) : (
+                <OutfieldPerformances performances={player.performances} />
+            )}
         </Paper>
     );
 };
