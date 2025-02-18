@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Divider } from "@mui/material";
 import "../styles/player-profile.css";
 import { calculateAge } from "../utils/dateUtils";
 
@@ -8,8 +8,9 @@ const PlayerProfileBasicDetails = ({player}) => {
         <>
             <Typography variant="h4" className="profile-name">{player.name}</Typography>
             <Typography variant="h6" className="profile-basic-info">
-            Age: {playerAge} | Position: {player.position} | Club: {player.club}
+                Age: {playerAge} | Position: {player.position} | Club: {player.club}
             </Typography>
+            <Divider className="section-divider" />
         </>
     );
 }

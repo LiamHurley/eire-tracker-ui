@@ -18,7 +18,6 @@ const PlayerProfile = () => {
     return (
         <Paper className="player-profile">
             <PlayerProfileBasicDetails player={player} />
-            <Divider className="section-divider" />
                         
             {player.position === "G" ? (
                 <GoalkeeperProfile player={player} />
@@ -26,7 +25,6 @@ const PlayerProfile = () => {
                 <OutfieldProfile player={player} />
             )}
 
-            <Typography variant="h6" sx={{ marginTop: 3 }}>Match History</Typography>
             {player.position === "G" ? (
                 <GoalkeeperPerformances performances={player.performances} />
             ) : (
