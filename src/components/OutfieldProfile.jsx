@@ -3,7 +3,6 @@ import { Paper, Typography, Card, CardContent } from "@mui/material";
 import "../styles/player-profile.css";
 import { OUTFIELD_PROFILE_STATS } from "../utils/constants";
 import P90Toggle from "./P90Toggle";
-import { p90ableStats } from "../utils/constants";
 import PlayerProfileP90ToggleDisplay from "./PlayerProfileP90ToggleDisplay";
 
 const OutfieldProfile = ({ player }) => {
@@ -46,7 +45,6 @@ const OutfieldProfile = ({ player }) => {
                                 stat={stat}
                                 selectedStatsType={selectedStatsType}
                                 player={player}
-                                p90ableStats={p90ableStats}
                             />
                         ))}
                     </CardContent>
@@ -62,7 +60,6 @@ const OutfieldProfile = ({ player }) => {
                                 stat={stat}
                                 selectedStatsType={selectedStatsType}
                                 player={player}
-                                p90ableStats={p90ableStats}
                             />
                         ))}
                     </CardContent>
@@ -78,7 +75,6 @@ const OutfieldProfile = ({ player }) => {
                                 stat={stat}
                                 selectedStatsType={selectedStatsType}
                                 player={player}
-                                p90ableStats={p90ableStats}
                             />
                         ))}
                     </CardContent>

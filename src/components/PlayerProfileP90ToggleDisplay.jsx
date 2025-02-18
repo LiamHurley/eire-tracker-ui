@@ -1,8 +1,9 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { convertToP90 } from "../utils/statsUtils";
+import { p90ableStats } from "../utils/constants";
 
-const PlayerProfileP90ToggleDisplay = ({ stat, selectedStatsType, player, p90ableStats }) => {
+const PlayerProfileP90ToggleDisplay = ({ stat, selectedStatsType, player }) => {
     const statValue = selectedStatsType === "Overall"
         ? player.overallStatsDto[stat.key]
         : p90ableStats.includes(`overallStatsDto.${stat.key}`) && player.overallStatsDto.minutesPlayed > 0

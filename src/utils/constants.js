@@ -94,6 +94,17 @@ export const OUTFIELD_PROFILE_STATS = {
   ],
 }
 
+export const GK_PROFILE_STATS = [
+  { label: "Appearances", key: "matchesPlayed" },
+  { label: "Minutes", key: "minutesPlayed" },
+  { label: "Saves", key: "saves" },
+  { label: "Saves from shots inside box", key: "savedShotsFromInsideTheBox" },
+  { label: "Clean sheets", key: "cleanSheets" },
+  { label: "Passing acc %", key: "passAccuracy" },
+  { label: "Errors leading to shot", key: "errorLeadToAShot" },
+  { label: "Avg rating", key: "rating" },
+]
+
 export const p90ableStats = [
     "overallStatsDto.accuratePass",
     "overallStatsDto.totalLongBalls",
