@@ -6,9 +6,11 @@ import '../styles/header.css';
 const Header = () => {
   return (
     <Box component="header" className="header">
-      <Typography variant="h4" className="logo">
-        Irish Football
-      </Typography>
+      <Link to="/" className="nav-link">
+        <Typography variant="h4" className="logo">
+          StatEire
+        </Typography>
+      </Link>
 
       <nav className="nav-links">
         <Link to="/" className="nav-link">Home</Link>
