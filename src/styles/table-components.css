@@ -1,8 +1,6 @@
-/* TableComponent.css */
-
 .table-container {
-    padding: 24px;
-    margin: 0 auto; /* Centers the container horizontally */
+    padding: 0px;
+    display: flex;
 }
 
 .options-section {

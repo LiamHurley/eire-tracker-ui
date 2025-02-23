@@ -4,6 +4,7 @@ import Filters from "./Filters";
 import TableComponent from "./Table";
 import usePlayers from "../hooks/usePlayers";
 import { STAT_HEADERS } from "../utils/constants";
+import "../styles/overall-table.css";
 
 const PlayersTable = () => {
     const [selectedPositions, setSelectedPositions] = useState(["GK", "DEF", "MID", "FWD"]);
@@ -21,25 +22,25 @@ const PlayersTable = () => {
     };
 
     return (
-        <Paper sx={{ width: "90%", margin: "0 auto", overflow: "hidden", padding: 2 }}>
+        <Paper sx={{ width: "90%", margin: "0 auto", overflow: "hidden", padding: 2 }} className="overall">
             <Filters
                 selectedPositions={selectedPositions}
                 setSelectedPositions={setSelectedPositions}
-                selectedStatsType={selectedStatsType}  // Pass the Overall/p90 toggle state
-                setSelectedStatsType={setSelectedStatsType}  // Pass the function to update Overall/p90 toggle
-                selectedCategory={selectedCategory}  // Pass the category stat state
-                setSelectedCategory={setSelectedCategory}  // Pass the function to update category stat
+                selectedStatsType={selectedStatsType}
+                setSelectedStatsType={setSelectedStatsType}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
             />
 
             <TableComponent
                 players={filteredPlayers || []}
-                headers={STAT_HEADERS[selectedCategory] || []}  // Pass the selected category headers
+                headers={STAT_HEADERS[selectedCategory] || []}
                 order="asc"
                 orderBy="name"
                 handleSortRequest={handleSortRequest}
                 rowsPerPage={rowsPerPage}
                 page={page}
-                statsType={selectedStatsType}  // Pass the Overall/p90 toggle state
+                statsType={selectedStatsType}
             />
 
             <TablePagination
