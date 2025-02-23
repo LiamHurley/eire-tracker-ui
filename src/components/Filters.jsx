@@ -34,18 +34,24 @@ const Filters = ({
 
     const handleCategoryChange = (event) => {
         setSelectedCategory(event.target.value);
+
+        if(event.target.value === 'Goalkeeping') {
+            setSelectedPositions(["GK"]);
+        }
     };
+
+    const isGoalkeepingCategory = selectedCategory === 'Goalkeeping';
 
     return (
         <Card className="filters-container">
             <CardContent>
-                <Typography variant="h6" gutterBottom className="filters-title">
-                    Filter Players
+                <Typography variant="h5" gutterBottom className="filters-title">
+                    Filtering
                 </Typography>
 
                 <Grid container spacing={2} className="filters-grid">
                     {/* Position Filters - Replacing Checkboxes with Toggle Buttons */}
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={3}>
                         <Card className="filter-card">
                             <Typography variant="subtitle1" gutterBottom>
                                 Position
@@ -61,6 +67,7 @@ const Filters = ({
                                         key={position}
                                         value={position}
                                         className="position-toggle-btn"
+                                        disabled={isGoalkeepingCategory && position !== "GK"}
                                     >
                                         {position}
                                     </ToggleButton>
@@ -70,7 +77,7 @@ const Filters = ({
                     </Grid>
 
                     {/* Stats Type Toggle Button */}
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={3}>
                         <Card className="filter-card">
                             <Typography variant="subtitle1" gutterBottom>
                                 Stats Type
@@ -85,14 +92,14 @@ const Filters = ({
                                     Overall
                                 </ToggleButton>
                                 <ToggleButton value="p90" className="stats-toggle-btn">
-                                    Per 90
+                                    p90
                                 </ToggleButton>
                             </ToggleButtonGroup>
                         </Card>
                     </Grid>
 
                     {/* Category Filters */}
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={3}>
                         <Card className="filter-card">
                             <Typography variant="subtitle1" gutterBottom>
                                 Category
