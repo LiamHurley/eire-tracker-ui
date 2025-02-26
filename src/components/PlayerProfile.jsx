@@ -25,11 +25,11 @@ const PlayerProfile = () => {
                 <OutfieldProfile player={player} />
             )}
 
-            {player.position === "G" ? (
+            {/* {player.position === "G" ? (
                 <GoalkeeperPerformances performances={player.performances} />
             ) : (
                 <OutfieldPerformances performances={player.performances} />
-            )}
+            )} */}
         </Paper>
     );
 };

@@ -140,4 +140,5 @@ export const p90ableStats = [
     "overallStatsDto.expectedGoals",
     "overallStatsDto.expectedAssists",
     "overallStatsDto.goalsPrevented",
+    "overallStatsDto.fouls"
 ];
