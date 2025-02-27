@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Paper, Typography, Card, CardContent, TablePagination, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { Paper, Typography, Card, CardContent, TablePagination, FormControl, Select, MenuItem } from "@mui/material";
 import "../styles/player-profile.css";
 import { OUTFIELD_PROFILE_STATS } from "../utils/constants";
 import P90Toggle from "./P90Toggle";
