@@ -40,7 +40,7 @@ const TableComponent = ({ players, headers, order, orderBy, handleSortRequest, r
                                                         {getNestedValue(player, header.key)}
                                                     </Link>
                                                 ) : p90ableStats.includes(header.key) && statsType === "p90" ? (
-                                                    convertToP90(player, header.key.split(".").pop())
+                                                    convertToP90(player.overallStatsDto, header.key.split(".").pop())
                                                 ) : (
                                                     getNestedValue(player, header.key)
                                                 )}
