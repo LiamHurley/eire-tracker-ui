@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import '../styles/header.css';
+import HeaderSearchBar from './HeaderSearchBar';
 
 const Header = () => {
   return (
@@ -12,7 +13,8 @@ const Header = () => {
         </Typography>
       </Link>
 
-      <nav className="nav-links">
+    <nav className="nav-links">
+        <HeaderSearchBar />
         <Link to="/" className="nav-link">Home</Link>
         {/* <Link to="/compare" className="nav-link">Player Comparison</Link> */}
         {/* <Link to="/about" className="nav-link">About</Link> */}
