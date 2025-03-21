@@ -10,11 +10,10 @@ const PlayerComparison = () => {
     return (
         <div className="comparison-container">
             <div className="cards-container">
-                {players.map((player, index) => (
+                { players.filter((player, index) => index <= 1 || players[index - 1]).map((player, index) => (
                     <Card
                         key={index}
                         className="comparison-card"
-                        sx={{visibility: index <= 1 || (players[index - 1]) ? 'visible' : 'hidden'}}
                     >
                         <CardContent>
                         {player ? (
