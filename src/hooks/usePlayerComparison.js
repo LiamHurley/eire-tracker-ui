@@ -4,7 +4,7 @@ import { fetchPlayerById, searchPlayersByName } from "../api/playersApi";
 const usePlayerComparison = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [selectedPlayers, setSelectedPlayers] = useState([]);
-    const [players, setPlayers] = useState([null, null]);
+    const [players, setPlayers] = useState([null, null, null, null]);
     const [selectedPlayerIndex, setSelectedPlayerIndex] = useState(null);
 
     const handleSearch = async (query) => {

@@ -14,6 +14,7 @@ const PlayerComparison = () => {
                     <Card
                         key={index}
                         className="comparison-card"
+                        sx={{visibility: index <= 1 || (players[index - 1]) ? 'visible' : 'hidden'}}
                     >
                         <CardContent>
                         {player ? (
