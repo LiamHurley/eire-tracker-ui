@@ -1,30 +1,18 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { TextField, Button, IconButton } from "@mui/material";
 import { Close } from "@mui/icons-material";
-import { fetchPlayerById, searchPlayersByName } from "../api/playersApi";
 import "../styles/comparison-search.css";
+import usePlayerComparisonSearch from "../hooks/usePlayerComparisonSearch";
 
-export default function PlayerComparisonSearch({isOpen, onClose}) {
-    const PLACEHOLDERS = [{name:"Evan Ferguson"},{name:"Finn Azaz"},
-        {name:"Rocco Vata"},{name:"Tom Cannon"},{name:"Jake O'Brien"}]
-    const [players, setPlayers] = useState(PLACEHOLDERS);
-    
-    const handleSearch = async (query) => {
-        if (query.length > 3) {
-            const results = await searchPlayersByName(query);
-            setPlayers(results);
-        } else {
-            setPlayers(PLACEHOLDERS);
-        }
-    };
+export default function PlayerComparisonSearch({isOpen, onClose, handlePlayerSelect, cardIndex}) {
+    const {players, handleSearch, handlePlayerSelectWrapper} = usePlayerComparisonSearch();
 
     if (!isOpen) return null; 
 
     return (
         <>
             <div className="overlay" onClick={onClose}></div>
-            
+
             <motion.div
                 initial={{ x: "100%" }}
                 animate={{ x: isOpen ? 0 : "100%" }}
@@ -46,12 +34,12 @@ export default function PlayerComparisonSearch({isOpen, onClose}) {
                 />
                 </div>
                 <div className="search-results">
-                {players.map((player, index) => (
-                    <div key={index} className="search-item">
-                    <span className="add-icon">➕</span>
-                    <span>{player.name}</span>
-                    </div>
-                ))}
+                    {players.map((player, index) => (
+                        <div key={index} className="search-item">
+                            <span className="add-icon">➕</span>
+                            <Button onClick={() => handlePlayerSelectWrapper(handlePlayerSelect, player, cardIndex)}>{player.name}</Button>
+                        </div>
+                    ))}
                 </div>
             </motion.div>
         </>

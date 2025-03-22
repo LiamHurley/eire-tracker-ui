@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card, CardContent, Typography, Button, TextField, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import usePlayerComparison from "../hooks/usePlayerComparison";
@@ -6,10 +6,13 @@ import "../styles/comparison.css";
 import PlayerComparisonSearch from "./PlayerComparisonSearch";
 
 const PlayerComparison = () => {
-    const { searchResults, handlePlayerSelect, handleSearchChange, players, 
-        selectedPlayerIndex, handleClearCard, isSearchDisplayed, setSearchDisplayed } = usePlayerComparison();
-    const [isSearchOverlayOpen, setIsSearchOverlayOpen] = useState(false);
+    const { handlePlayerSelect, players, handleClearCard, setCardIndex, 
+        setIsSearchOverlayOpen, isSearchOverlayOpen, cardIndex } = usePlayerComparison();
 
+    const handleSearchOverlay = (index) => {
+        setCardIndex(index);
+        setIsSearchOverlayOpen(true);
+    }
 
     return (
         <div className="comparison-container">
@@ -41,35 +44,21 @@ const PlayerComparison = () => {
                                     <div className="search-box">
                                         <Button
                                             disabled={index !== 0 && !players[0]}
-                                            onClick={() => setIsSearchOverlayOpen(true)}
+                                            onClick={() => handleSearchOverlay(index)}
                                         >
                                             <Typography variant="h6">Add player</Typography>
                                         </Button>
-                                        {/* <TextField
-                                            label="Search Player"
-                                            variant="outlined"
-                                            onChange={(e) => handleSearchChange(e, index)}
-                                            fullWidth
-                                            disabled={index !== 0 && !players[0]}
-                                        /> */}
-                                        {/* { selectedPlayerIndex === index &&
-                                            <div className="search-results">
-                                                {searchResults?.map((player) => (
-                                                    <Button
-                                                        key={player.playerId}
-                                                        onClick={() => handlePlayerSelect(player, index)}
-                                                    >
-                                                        {player.name}
-                                                    </Button>
-                                                ))}
-                                            </div>
-                                        } */}
                                     </div>
                                 )}
                         </CardContent>
                     </Card>
                 ))}
-                <PlayerComparisonSearch isOpen={isSearchOverlayOpen} onClose={() => setIsSearchOverlayOpen(false)}/>
+                <PlayerComparisonSearch 
+                    isOpen={isSearchOverlayOpen} 
+                    onClose={() => setIsSearchOverlayOpen(false)}
+                    handlePlayerSelect={handlePlayerSelect}
+                    cardIndex={cardIndex}
+                />
             </div>
         </div>
     );
