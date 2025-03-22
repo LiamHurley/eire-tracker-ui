@@ -36,8 +36,10 @@ export default function PlayerComparisonSearch({isOpen, onClose, handlePlayerSel
                 <div className="search-results">
                     {players.map((player, index) => (
                         <div key={index} className="search-item">
-                            <span className="add-icon">➕</span>
-                            <Button onClick={() => handlePlayerSelectWrapper(handlePlayerSelect, player, cardIndex)}>{player.name}</Button>
+                            <Button onClick={() => handlePlayerSelectWrapper(handlePlayerSelect, player, cardIndex)}>
+                                <span className="add-icon">➕</span>
+                                {player.name}
+                            </Button>
                         </div>
                     ))}
                 </div>

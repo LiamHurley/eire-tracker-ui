@@ -1,9 +1,10 @@
 import React from "react";
-import { Card, CardContent, Typography, Button, TextField, IconButton } from "@mui/material";
+import { Card, CardContent, Typography, Button, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import usePlayerComparison from "../hooks/usePlayerComparison";
 import "../styles/comparison.css";
 import PlayerComparisonSearch from "./PlayerComparisonSearch";
+import PlayerComparisonDisplay from "./PlayerComparisonDisplay";
 
 const PlayerComparison = () => {
     const { handlePlayerSelect, players, handleClearCard, setCardIndex, 
@@ -36,9 +37,7 @@ const PlayerComparison = () => {
                                     >
                                         <CloseIcon />
                                     </IconButton>
-                                    <Typography variant="h6">{player.name}</Typography>
-                                    <Typography variant="body2">{player.position}</Typography>
-                                    <Typography variant="body2">{player.club}</Typography>
+                                    <PlayerComparisonDisplay player={player} />
                                 </div>
                             ) : (
                                     <div className="search-box">
