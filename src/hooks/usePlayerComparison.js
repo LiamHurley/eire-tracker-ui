@@ -6,9 +6,11 @@ const usePlayerComparison = () => {
     const [selectedPlayers, setSelectedPlayers] = useState([]);
     const [players, setPlayers] = useState([null, null, null, null]);
     const [selectedPlayerIndex, setSelectedPlayerIndex] = useState(null);
+    const [isSearchDisplayed, setSearchDisplayed] = useState(false);
 
     const handleSearch = async (query) => {
         if (query.length > 3) {
+            setSearchDisplayed(true);
             const results = await searchPlayersByName(query);
             setSearchResults(results);
         } else {
@@ -46,7 +48,7 @@ const usePlayerComparison = () => {
     }
 
     return { searchResults, selectedPlayers, handleSearch, handlePlayerSelect, resetSearchResults, 
-        handleClearCard, handleSearchChange, players, selectedPlayerIndex, setPlayers, handleClearCard };
+        handleClearCard, handleSearchChange, players, selectedPlayerIndex, setPlayers, handleClearCard, isSearchDisplayed, setSearchDisplayed };
 };
 
 export default usePlayerComparison;

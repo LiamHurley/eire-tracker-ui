@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, Typography, Button, TextField, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import usePlayerComparison from "../hooks/usePlayerComparison";
 import "../styles/comparison.css";
+import PlayerComparisonSearch from "./PlayerComparisonSearch";
 
 const PlayerComparison = () => {
-    const { searchResults, handlePlayerSelect, handleSearchChange, players, selectedPlayerIndex, handleClearCard } = usePlayerComparison(); 
+    const { searchResults, handlePlayerSelect, handleSearchChange, players, 
+        selectedPlayerIndex, handleClearCard, isSearchDisplayed, setSearchDisplayed } = usePlayerComparison();
+    const [isSearchOverlayOpen, setIsSearchOverlayOpen] = useState(false);
+
 
     return (
         <div className="comparison-container">
@@ -35,14 +39,20 @@ const PlayerComparison = () => {
                                 </div>
                             ) : (
                                     <div className="search-box">
-                                        <TextField
+                                        <Button
+                                            disabled={index !== 0 && !players[0]}
+                                            onClick={() => setIsSearchOverlayOpen(true)}
+                                        >
+                                            <Typography variant="h6">Add player</Typography>
+                                        </Button>
+                                        {/* <TextField
                                             label="Search Player"
                                             variant="outlined"
                                             onChange={(e) => handleSearchChange(e, index)}
                                             fullWidth
                                             disabled={index !== 0 && !players[0]}
-                                        />
-                                        { selectedPlayerIndex === index &&
+                                        /> */}
+                                        {/* { selectedPlayerIndex === index &&
                                             <div className="search-results">
                                                 {searchResults?.map((player) => (
                                                     <Button
@@ -53,12 +63,13 @@ const PlayerComparison = () => {
                                                     </Button>
                                                 ))}
                                             </div>
-                                        }
+                                        } */}
                                     </div>
                                 )}
                         </CardContent>
                     </Card>
                 ))}
+                <PlayerComparisonSearch isOpen={isSearchOverlayOpen} onClose={() => setIsSearchOverlayOpen(false)}/>
             </div>
         </div>
     );
