@@ -1,5 +1,5 @@
 export const getNestedValue = (obj, path) => {
-    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+    return sanitise(path).split('.').reduce((acc, part) => acc && acc[part], obj);
 };
 
 export const convertToP90 = (stats, statKey) => {
@@ -11,3 +11,16 @@ export const convertToP90 = (stats, statKey) => {
     }
     return 0;
 };
+
+const sanitise = (statName) => {
+    switch (statName) {
+        case "appearances":
+            return "matchesPlayed";
+        case "minutes":
+            return "minutesPlayed";
+        case "assists":
+            return "goalAssist";
+    }
+
+    return statName;
+}

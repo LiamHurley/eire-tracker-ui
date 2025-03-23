@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, Typography, Button, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import usePlayerComparison from "../hooks/usePlayerComparison";
 import "../styles/comparison.css";
 import PlayerComparisonSearch from "./PlayerComparisonSearch";
 import PlayerComparisonDisplay from "./PlayerComparisonDisplay";
+import PlayerComparisonStatSelector from "./PlayerComparisonStatSelector";
 
 const PlayerComparison = () => {
     const { handlePlayerSelect, players, handleClearCard, setCardIndex, 
         setIsSearchOverlayOpen, isSearchOverlayOpen, cardIndex } = usePlayerComparison();
+
+    const DEFAULT_STATS = ["Appearances", "Minutes", "Goals", "Assists"];
+    const [selectedStats, setSelectedStats] = useState(DEFAULT_STATS);
+    const [isStatSelectorOpen, setIsStatSelectorOpen] = useState(false);
 
     const handleSearchOverlay = (index) => {
         setCardIndex(index);
@@ -37,7 +42,7 @@ const PlayerComparison = () => {
                                     >
                                         <CloseIcon />
                                     </IconButton>
-                                    <PlayerComparisonDisplay player={player} />
+                                    <PlayerComparisonDisplay player={player} selectedStats={selectedStats} />
                                 </div>
                             ) : (
                                     <div className="search-box">
@@ -52,11 +57,19 @@ const PlayerComparison = () => {
                         </CardContent>
                     </Card>
                 ))}
+                { players[0] &&
+                    <Button onClick={() => setIsStatSelectorOpen(true)}>Edit stats</Button>
+                }
                 <PlayerComparisonSearch 
                     isOpen={isSearchOverlayOpen} 
                     onClose={() => setIsSearchOverlayOpen(false)}
                     handlePlayerSelect={handlePlayerSelect}
                     cardIndex={cardIndex}
+                />
+                <PlayerComparisonStatSelector
+                    isOpen={isStatSelectorOpen}
+                    onClose={() => setIsStatSelectorOpen(false)}
+                    setStats={setSelectedStats}
                 />
             </div>
         </div>
