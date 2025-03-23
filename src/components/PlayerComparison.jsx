@@ -57,9 +57,6 @@ const PlayerComparison = () => {
                         </CardContent>
                     </Card>
                 ))}
-                { players[0] &&
-                    <Button onClick={() => setIsStatSelectorOpen(true)}>Edit stats</Button>
-                }
                 <PlayerComparisonSearch 
                     isOpen={isSearchOverlayOpen} 
                     onClose={() => setIsSearchOverlayOpen(false)}
@@ -72,6 +69,7 @@ const PlayerComparison = () => {
                     setStats={setSelectedStats}
                 />
             </div>
+            { players[0] && <Button onClick={() => setIsStatSelectorOpen(true)}>Edit stats</Button> }
         </div>
     );
 };

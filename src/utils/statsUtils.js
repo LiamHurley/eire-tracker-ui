@@ -20,7 +20,7 @@ const sanitise = (statName) => {
             return "minutesPlayed";
         case "assists":
             return "goalAssist";
+        default:
+            return statName;
     }
-
-    return statName;
 }

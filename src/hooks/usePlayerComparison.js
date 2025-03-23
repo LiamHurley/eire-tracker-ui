@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchPlayerById, searchPlayersByName } from "../api/playersApi";
+import { fetchPlayerById } from "../api/playersApi";
 
 const usePlayerComparison = () => {
     const [players, setPlayers] = useState([null, null, null, null]);
