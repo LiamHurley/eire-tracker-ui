@@ -15,23 +15,29 @@ const PlayerComparisonStatSelector = ({ isOpen, onClose, setStats, selectedStats
         },
         {
             title: "Appearances",
-            options: ["Appearances", "Minutes", "Starts", "Subbed On", "Subbed Off"],
+            options: ["Appearances", "Minutes"],
         },
         {
             title: "Defending",
-            options: ["Clean Sheets"],
+            options: ["Clean Sheets", "Aerial Duels Won", "Aerial Duels Won %", "Duels Won", "Duels Won %", "Interceptions", "Tackles", "Blocks",
+                "Fouls", "Error Lead To Shot"],
         },
         {
             title: "Passing",
-            options: ["Passes Attempted", "Passes Completed", "Pass Completion %", "Big Chances Created", "Long Balls"],
+            options: ["Assists", "Expected Assists", "Passes Attempted", "Passes Completed", "Pass Completion %", 
+                "Big Chances Created", "Key Passes", "Long Balls", "Crosses Completed", "Possession Lost"],
         },
         {
             title: "Shooting",
-            options: ["Goals", "Shots Taken", "Shots On Target"],
+            options: ["Goals", "Expected Goals", "Shots Taken", "Shots On Target", "Big Chances Missed"],
         },
         {
             title: "Goalkeeping",
-            options: ["Saves", "Clean Sheets"],
+            options: ["Saves", "Clean Sheets", "Goals Prevented", "Punches", "Saved Shots From Inside The Box", "Error Lead To Shot"],
+        },
+        {
+            title: "Misc",
+            options: ["Fouled", "Fouls", "Touches", "Captain"],
         },
     ];
 
@@ -76,17 +82,19 @@ const PlayerComparisonStatSelector = ({ isOpen, onClose, setStats, selectedStats
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         {category.options.map((option) => (
-                                            <FormControlLabel
-                                            key={option}
-                                            control={
-                                                <Checkbox
-                                                checked={checked[option] || false}
-                                                onChange={handleChange}
-                                                name={option}
+                                            <Box key={option} display="block">
+                                                <FormControlLabel
+                                                    key={option}
+                                                    control={
+                                                        <Checkbox
+                                                            checked={checked[option] || false}
+                                                            onChange={handleChange}
+                                                            name={option}
+                                                        />
+                                                    }
+                                                    label={option}
                                                 />
-                                            }
-                                            label={option}
-                                            />
+                                            </Box>
                                         ))}
                                     </AccordionDetails>
                                 </Accordion>
