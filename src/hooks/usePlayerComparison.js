@@ -17,6 +17,14 @@ const usePlayerComparison = () => {
     const handleClearCard = (index) => {
         const newPlayers = [...players];
         newPlayers[index] = null;
+
+        for (let i = 1; i <= newPlayers.length; i++) {
+            if (!newPlayers[i - 1] && newPlayers[i]) {
+                newPlayers[i - 1] = newPlayers[i];
+                newPlayers[i] = null;
+            }
+        };
+
         setPlayers(newPlayers);
     }
 
