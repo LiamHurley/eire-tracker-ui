@@ -67,6 +67,7 @@ const PlayerComparison = () => {
                     isOpen={isStatSelectorOpen}
                     onClose={() => setIsStatSelectorOpen(false)}
                     setStats={setSelectedStats}
+                    selectedStats={selectedStats}
                 />
             </div>
             { players[0] && <Button onClick={() => setIsStatSelectorOpen(true)}>Edit stats</Button> }
