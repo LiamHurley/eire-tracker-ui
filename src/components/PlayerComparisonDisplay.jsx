@@ -14,10 +14,10 @@ const PlayerComparisonDisplay = ({ player, selectedStats }) => {
             <Grid container spacing={1} sx={{ mt: 2 }}>
             { selectedStats.map((stat) => (
                 <>
-                    <Grid item xs={6}>
+                    <Grid item xs={8}>
                         <Typography variant="body2">{stat}</Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={4}>
                         <Typography variant="body2" align="right">{getNestedValue(seasonStats, stat.toLowerCase())}</Typography>
                     </Grid>
                 </>
