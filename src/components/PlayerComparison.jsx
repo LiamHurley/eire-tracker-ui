@@ -82,7 +82,7 @@ const PlayerComparison = () => {
                     selectedStats={selectedStats}
                 />
             </div>
-            { players[0] && <Button onClick={() => setIsStatSelectorOpen(true)}>Edit stats</Button> }
+            { players[0] && <Button onClick={() => setIsStatSelectorOpen(true)}>Select stats</Button> }
         </div>
     );
 };
