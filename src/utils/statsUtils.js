@@ -4,6 +4,7 @@ export const getNestedValue = (obj, path) => {
 
 export const convertToP90 = (stats, statKey) => {
     const minutesPlayed = stats?.minutesPlayed || 0;
+    statKey = sanitise(statKey);
     const statValue = stats?.[statKey] || 0;
     if (minutesPlayed > 0) {
         const p90Value = (90 / minutesPlayed) * statValue;
@@ -12,7 +13,7 @@ export const convertToP90 = (stats, statKey) => {
     return 0;
 };
 
-const sanitise = (statName) => {
+export const sanitise = (statName) => {
     switch (statName) {
         case "appearances":
             return "matchesPlayed";

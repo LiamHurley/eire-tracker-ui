@@ -6,6 +6,7 @@ import "../styles/comparison.css";
 import PlayerComparisonSearch from "./PlayerComparisonSearch";
 import PlayerComparisonDisplay from "./PlayerComparisonDisplay";
 import PlayerComparisonStatSelector from "./PlayerComparisonStatSelector";
+import P90Toggle from "./P90Toggle";
 
 const PlayerComparison = () => {
     const { handlePlayerSelect, players, handleClearCard, setCardIndex, 
@@ -14,6 +15,13 @@ const PlayerComparison = () => {
     const DEFAULT_STATS = ["Appearances", "Minutes", "Goals", "Assists"];
     const [selectedStats, setSelectedStats] = useState(DEFAULT_STATS);
     const [isStatSelectorOpen, setIsStatSelectorOpen] = useState(false);
+    const [selectedStatsType, setSelectedStatsType] = useState("Overall");
+
+    const handleStatsTypeChange = (event, newStatsType) => {
+        if (newStatsType !== null) {
+            setSelectedStatsType(newStatsType);
+        }
+    };
 
     const handleSearchOverlay = (index) => {
         setCardIndex(index);
@@ -22,6 +30,10 @@ const PlayerComparison = () => {
 
     return (
         <div className="comparison-container">
+            <P90Toggle
+                    selectedStatsType={selectedStatsType}
+                    handleStatsTypeChange={handleStatsTypeChange}
+            />
             <div className="cards-container">
                 { players.filter((player, index) => index <= 1 || players[index - 1]).map((player, index) => (
                     <Card
@@ -42,7 +54,7 @@ const PlayerComparison = () => {
                                     >
                                         <CloseIcon />
                                     </IconButton>
-                                    <PlayerComparisonDisplay player={player} selectedStats={selectedStats} />
+                                    <PlayerComparisonDisplay player={player} selectedStats={selectedStats} statType={selectedStatsType} />
                                 </div>
                             ) : (
                                     <div className="search-box">
