@@ -4,7 +4,7 @@ import { getCurrentYear } from "../utils/dateUtils";
 import { convertToP90, getNestedValue, sanitise } from "../utils/statsUtils";
 import { p90ableStats } from "../utils/constants";
 
-const PlayerComparisonDisplay = ({ player, selectedStats, statType }) => {
+const PlayerComparisonDisplay = ({ player, selectedStats, statType, leader }) => {
     const seasonStats = player.seasons?.find((s) => s.year === getCurrentYear())?.overallStatsDto;
 
     return (
@@ -20,11 +20,11 @@ const PlayerComparisonDisplay = ({ player, selectedStats, statType }) => {
                     </Grid>
                     { statType.toLowerCase() === 'p90' && p90ableStats.includes(`overallStatsDto.${sanitise(stat.toLowerCase())}`) ? (
                         <Grid item xs={4}>
-                            <Typography variant="body2" align="right">{convertToP90(seasonStats, stat.toLowerCase())}</Typography>
+                            <Typography variant="body2" align="right" sx={{color: leader.includes(stat) ? 'green' : 'red'}}>{convertToP90(seasonStats, stat.toLowerCase())}</Typography>
                         </Grid>
                     ) :
                     <Grid item xs={4}>
-                        <Typography variant="body2" align="right">{getNestedValue(seasonStats, stat.toLowerCase())}</Typography>
+                        <Typography variant="body2" align="right" sx={{color: leader.includes(stat) ? 'green' : 'red'}}>{getNestedValue(seasonStats, stat.toLowerCase())}</Typography>
                     </Grid> 
                     }
                 </>
