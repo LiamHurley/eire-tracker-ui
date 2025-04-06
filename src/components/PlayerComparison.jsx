@@ -9,30 +9,21 @@ import PlayerComparisonStatSelector from "./PlayerComparisonStatSelector";
 import P90Toggle from "./P90Toggle";
 
 const PlayerComparison = () => {
-    const { handlePlayerSelect, players, handleClearCard, setCardIndex, 
-        setIsSearchOverlayOpen, isSearchOverlayOpen, cardIndex } = usePlayerComparison();
-
-    const DEFAULT_STATS = ["Appearances", "Minutes", "Goals", "Assists"];
-    const [selectedStats, setSelectedStats] = useState(DEFAULT_STATS);
+    const { handlePlayerSelect, players, handleClearCard, setCardIndex, setIsSearchOverlayOpen, isSearchOverlayOpen, cardIndex, 
+        selectedStatsType, selectedStats, setSelectedStats, statLeaders, handleStatsTypeChange } = usePlayerComparison();
+    
     const [isStatSelectorOpen, setIsStatSelectorOpen] = useState(false);
-    const [selectedStatsType, setSelectedStatsType] = useState("Overall");
-
-    const handleStatsTypeChange = (event, newStatsType) => {
-        if (newStatsType !== null) {
-            setSelectedStatsType(newStatsType);
-        }
-    };
-
+    
     const handleSearchOverlay = (index) => {
         setCardIndex(index);
         setIsSearchOverlayOpen(true);
-    }
+    };
 
     return (
         <div className="comparison-container">
             <P90Toggle
-                    selectedStatsType={selectedStatsType}
-                    handleStatsTypeChange={handleStatsTypeChange}
+                selectedStatsType={selectedStatsType}
+                handleStatsTypeChange={handleStatsTypeChange}
             />
             <div className="cards-container">
                 { players.filter((player, index) => index <= 1 || players[index - 1]).map((player, index) => (
@@ -40,7 +31,7 @@ const PlayerComparison = () => {
                         key={index}
                         className="comparison-card"
                     >
-                        <CardContent>
+                        <CardContent>  
                         {player ? (
                                 <div>
                                     <IconButton
@@ -54,7 +45,12 @@ const PlayerComparison = () => {
                                     >
                                         <CloseIcon />
                                     </IconButton>
-                                    <PlayerComparisonDisplay player={player} selectedStats={selectedStats} statType={selectedStatsType} />
+                                    <PlayerComparisonDisplay 
+                                        player={player} 
+                                        selectedStats={selectedStats} 
+                                        statType={selectedStatsType} 
+                                        leader={statLeaders.filter(sl => sl.playerId === player.playerId).map(s => s.stat)} 
+                                    />
                                 </div>
                             ) : (
                                     <div className="search-box">

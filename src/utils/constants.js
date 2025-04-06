@@ -142,3 +142,11 @@ export const p90ableStats = [
     "overallStatsDto.goalsPrevented",
     "overallStatsDto.fouls"
 ];
+
+export const negativeStats = [
+  "errorLeadToAShot",
+  "bigChanceMissed",
+  "possessionLostCtrl",
+  "fouls",
+  "totalOffside"
+];
