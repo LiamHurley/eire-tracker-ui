@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchPlayerById } from "../api/playersApi";
-import { sanitise } from "../utils/statsUtils";
+import { sanitise, convertToP90 } from "../utils/statsUtils";
 import { getCurrentYear } from "../utils/dateUtils";
+import { p90ableStats } from "../utils/constants";
 
 const usePlayerComparison = () => {
     const [players, setPlayers] = useState([null, null, null, null]);
@@ -18,11 +19,7 @@ const usePlayerComparison = () => {
         };
       
         setStatLeaders(calculateStatLeaders());
-    }, [players, selectedStats]);
-
-    useEffect(() => {
-        console.log("Updated statLeaders:", statLeaders);
-    }, [statLeaders]);
+    }, [players, selectedStats, selectedStatsType]);
 
     const handlePlayerSelect = async (player, index) => {
         const apiPlayer = await fetchPlayerById(player.playerId);
@@ -35,7 +32,6 @@ const usePlayerComparison = () => {
     const handleStatsTypeChange = (event, newStatsType) => {
         if (newStatsType !== null) {
             setSelectedStatsType(newStatsType);
-            // convert all p90able stats on the player objects themselves?
         }
     };
 
@@ -46,7 +42,12 @@ const usePlayerComparison = () => {
         
         for (const player of players) {
             if (player !== null) {
-                const value = player?.seasons?.find((s) => s.year === getCurrentYear())?.overallStatsDto?.[sanitisedStat];
+                const stats = player?.seasons?.find((s) => s.year === getCurrentYear())?.overallStatsDto;
+                let value = stats?.[sanitisedStat];
+
+                if (selectedStatsType === 'p90' && p90ableStats.includes(`overallStatsDto.${sanitisedStat}`)) {
+                    value = convertToP90(stats, sanitisedStat);
+                }
             
                 if (value != null && value > topValue) {
                     topValue = value;
