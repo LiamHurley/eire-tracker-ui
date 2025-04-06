@@ -10,7 +10,7 @@ import P90Toggle from "./P90Toggle";
 
 const PlayerComparison = () => {
     const { handlePlayerSelect, players, handleClearCard, setCardIndex, setIsSearchOverlayOpen, isSearchOverlayOpen, cardIndex, 
-        selectedStatsType, setSelectedStatsType, selectedStats, setSelectedStats, statLeaders, handleStatsTypeChange } = usePlayerComparison();
+        selectedStatsType, selectedStats, setSelectedStats, statLeaders, handleStatsTypeChange } = usePlayerComparison();
     
     const [isStatSelectorOpen, setIsStatSelectorOpen] = useState(false);
     
