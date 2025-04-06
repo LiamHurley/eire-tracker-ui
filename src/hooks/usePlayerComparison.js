@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchPlayerById } from "../api/playersApi";
 import { sanitise, convertToP90 } from "../utils/statsUtils";
 import { getCurrentYear } from "../utils/dateUtils";
-import { p90ableStats } from "../utils/constants";
+import { p90ableStats, negativeStats } from "../utils/constants";
 
 const usePlayerComparison = () => {
     const [players, setPlayers] = useState([null, null, null, null]);
@@ -38,7 +38,9 @@ const usePlayerComparison = () => {
     function getTopPlayerByStat(stat) {
         let topPlayerId = '';
         let topValue = -Infinity;
+        let lowValue = Infinity;
         const sanitisedStat = sanitise(stat.toLowerCase());
+        const isNegativeStat = negativeStats.includes(sanitisedStat);
         
         for (const player of players) {
             if (player !== null) {
@@ -48,9 +50,14 @@ const usePlayerComparison = () => {
                 if (selectedStatsType === 'p90' && p90ableStats.includes(`overallStatsDto.${sanitisedStat}`)) {
                     value = convertToP90(stats, sanitisedStat);
                 }
-            
-                if (value != null && value > topValue) {
+
+                if (!isNegativeStat && value != null && value > topValue) {
                     topValue = value;
+                    topPlayerId = player.playerId;
+                }
+
+                if (isNegativeStat && value != null && value < lowValue) {
+                    lowValue = value;
                     topPlayerId = player.playerId;
                 }
             }
@@ -59,7 +66,7 @@ const usePlayerComparison = () => {
         return {
             stat: stat,
             playerId: topPlayerId,
-            value: topValue === -Infinity ? '' : topValue
+            value: isNegativeStat ? (lowValue === Infinity ? '' : lowValue) : topValue === -Infinity ? '' : topValue
         };
     }
 
