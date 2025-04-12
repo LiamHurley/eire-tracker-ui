@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchPlayerById } from "../api/playersApi";
+import { fetchPlayerForComparison } from "../api/playersApi";
 import { sanitise, convertToP90 } from "../utils/statsUtils";
 import { getCurrentYear } from "../utils/dateUtils";
 import { p90ableStats, negativeStats } from "../utils/constants";
@@ -22,7 +22,7 @@ const usePlayerComparison = () => {
     }, [players, selectedStats, selectedStatsType]);
 
     const handlePlayerSelect = async (player, index) => {
-        const apiPlayer = await fetchPlayerById(player.playerId);
+        const apiPlayer = await fetchPlayerForComparison(player.playerId);
         const currentPlayers = [...players];
         currentPlayers[index] = apiPlayer;
         setPlayers(currentPlayers);
