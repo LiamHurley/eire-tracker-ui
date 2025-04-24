@@ -7,6 +7,7 @@ const OutfieldPerformances = ({ performances, rowsPerPage, page }) => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Date</TableCell>
+                            <TableCell>Competition</TableCell>
                             <TableCell>Home</TableCell>
                             <TableCell>Away</TableCell>
                             <TableCell>G</TableCell>
@@ -19,6 +20,7 @@ const OutfieldPerformances = ({ performances, rowsPerPage, page }) => {
                         {performances.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((performance) => (
                             <TableRow key={performance.performanceId}>
                                 <TableCell>{performance.matchDate}</TableCell>
+                                <TableCell>{performance.tournament ?? 'N/A'}</TableCell>
                                 <TableCell sx={{ fontWeight: performance.homeAway === 'H' ? 'bold' : 'normal' }}>{performance.homeTeam}</TableCell>
                                 <TableCell sx={{ fontWeight: performance.homeAway === 'A' ? 'bold' : 'normal' }}>{performance.awayTeam}</TableCell>
                                 <TableCell>{performance.goals}</TableCell>
